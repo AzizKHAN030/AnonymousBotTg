@@ -307,7 +307,7 @@ const start = () => {
     } else {
       return bot.sendMessage(
         chatId,
-        "Are you sure you want to publish the message?",
+        "Are you sure you want to publish this message?",
         opts
       );
     }
@@ -317,7 +317,7 @@ const start = () => {
     if (msg.text === "/start") {
       await bot.sendMessage(
         chatId,
-        "Hi, Amitian! Send a message in order to publish it anonymously in the channel!\n\n\nPlease, do not use filthy language and do not insult anyone. Constructive criticism is accepted."
+        "Hi, Amitian! Send a message in order to publish it anonymously on the channel!\n\n\nPlease, do not use filthy language and do not insult anyone. Constructive criticism is accepted."
       );
     }
 
