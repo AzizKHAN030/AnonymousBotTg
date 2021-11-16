@@ -1,7 +1,8 @@
 const TelegramApi = require("node-telegram-bot-api");
 
-const token = "2110311986:AAFMyvaYX72Z5sFaxtNx3GiL8dUJkAU0S48";
+const token = "2136402122:AAGwomAMW_2RfzBlOIbYakHZXGkFP8yw5Zk";
 const bot = new TelegramApi(token, { polling: true });
+const channelId = -1001786722240;
 
 const swearArr = [
   "архипиздрит",
@@ -297,14 +298,18 @@ const start = () => {
       reply_markup: JSON.stringify({
         resize_keyboard: true,
         one_time_keyboard: true,
-        keyboard: [["Да ✅", "Нет ❌"]],
+        keyboard: [["Yes ✅", "No ❌"]],
       }),
     };
     if (swearArr.some((word) => message.toLowerCase().includes(word))) {
       message = "";
-      bot.sendMessage(chatId, "Мат запрещен!");
+      bot.sendMessage(chatId, "Swearing is forbidden!");
     } else {
-      return bot.sendMessage(chatId, "Вы уверены отправить сообщение?", opts);
+      return bot.sendMessage(
+        chatId,
+        "Are you sure you want to publish the message?",
+        opts
+      );
     }
   });
   bot.on("message", async (msg) => {
@@ -312,15 +317,15 @@ const start = () => {
     if (msg.text === "/start") {
       await bot.sendMessage(
         chatId,
-        "Привет, Аноним! Отправь сообщение для анонимной публикации в канале!"
+        "Hi, Amitian! Send a message in order to publish it anonymously in the channel!\n\n\nPlease, do not use filthy language and do not insult anyone. Constructive criticism is accepted."
       );
     }
 
-    if (msg.text === "Да ✅" && chatId !== -1001754268091 && message) {
-      await bot.sendMessage(-1001786722240, message);
-      await bot.sendMessage(chatId, "Ваше сообщение отправлено!");
-    } else if (msg.text === "Нет ❌" && chatId !== -1001754268091 && message) {
-      await bot.sendMessage(chatId, "Ваше сообщение отменено!");
+    if (msg.text === "Yes ✅" && chatId !== channelId && message) {
+      await bot.sendMessage(channelId, message);
+      await bot.sendMessage(chatId, "Your message has been sent!");
+    } else if (msg.text === "No ❌" && chatId !== channelId && message) {
+      await bot.sendMessage(chatId, "Your message has been deleted!");
     }
     message = "";
   });
