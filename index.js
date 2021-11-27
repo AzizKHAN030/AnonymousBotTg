@@ -160,7 +160,7 @@ const start = () => {
       } else {
         bot.sendMessage(
           chatId,
-          "Are you sure you want to publish this message?\n\nYour message will be deleted in 30s",
+          "Are you sure you want to publish this message?",
           opts
         );
       }
@@ -267,7 +267,7 @@ const start = () => {
         } else {
           bot.sendMessage(
             chatId,
-            "Are you sure you want to publish this message?\n\nYour message will be deleted in 30s",
+            "Are you sure you want to publish this message?",
             opts
           );
         }
