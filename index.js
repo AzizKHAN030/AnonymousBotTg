@@ -1,5 +1,4 @@
 const fs = require("fs");
-const axios = require("axios");
 const TelegramApi = require("node-telegram-bot-api");
 
 const token = "2131990498:AAF8-wn77FRUANnZDLIogwy8JmGXLYi0CFk";
@@ -47,6 +46,10 @@ const start = () => {
                 );
           } catch (error) {
             console.log(error);
+            bot.sendMessage(
+              chatId,
+              "An error occured, please report to @Aminymous_Contact_Bot"
+            );
           }
         }
       }
@@ -72,6 +75,10 @@ const start = () => {
                 );
           } catch (error) {
             console.log(error);
+            bot.sendMessage(
+              chatId,
+              "An error occured, please report to @Aminymous_Contact_Bot"
+            );
           }
         }
       }
@@ -82,6 +89,10 @@ const start = () => {
           bot.sendMessage(chatId, data);
         } catch (error) {
           console.log(error);
+          bot.sendMessage(
+            chatId,
+            "An error occured, please report to @Aminymous_Contact_Bot"
+          );
         }
       }
       if (msg.text === "/botstop" && admins.find((admin) => admin === chatId)) {
@@ -112,7 +123,7 @@ const start = () => {
     }
   });
 
-  bot.onText(/^[^$\/✅❌]*$/i, (msg) => {
+  bot.onText(/^[^$✅❌]*$/i, (msg) => {
     const chatId = msg.chat.id;
     const text = msg.text;
     if (options.botStop) {
@@ -155,6 +166,10 @@ const start = () => {
       }
     } catch (error) {
       console.log(error);
+      bot.sendMessage(
+        chatId,
+        "An error occured, please report to @Aminymous_Contact_Bot"
+      );
     }
 
     deleteTimer(chatId);
@@ -198,7 +213,10 @@ const start = () => {
           );
         }
 
-        await bot.sendMessage(chatId, "Your message has been sent!");
+        await bot.sendMessage(
+          chatId,
+          "Your message has been sent! \n\nIt is published here:\n\nhttps://t.me/anonbotchannel"
+        );
       } else if (
         msg.text === "No ❌" &&
         chatId !== channelId &&
@@ -227,7 +245,7 @@ const start = () => {
         if (options.photoStop) {
           bot.sendMessage(
             chatId,
-            "Unfortunately sending photos is not available for now((("
+            "Unfortunately sending photos is not available for now..."
           );
           return;
         }
@@ -255,6 +273,10 @@ const start = () => {
         }
       } catch (error) {
         console.log(error);
+        bot.sendMessage(
+          chatId,
+          "An error occured, please report to @Aminymous_Contact_Bot"
+        );
       }
       deleteTimer(chatId);
     }
