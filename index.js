@@ -1,7 +1,7 @@
 const fs = require("fs");
 const TelegramApi = require("node-telegram-bot-api");
 
-const token = "2131990498:AAF8-wn77FRUANnZDLIogwy8JmGXLYi0CFk";
+const token = "";//BOT TOKEN INSIDE QUOTES
 const bot = new TelegramApi(token, { polling: true });
 const channelId = -1001685576565;
 const admins = [648848311, 571803901];
